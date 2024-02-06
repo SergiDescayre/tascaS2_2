@@ -76,6 +76,10 @@
   }
 }
 
+#grocery, #clothes{
+  background-color:rgb(242, 236, 236);
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -88,6 +92,27 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+body .header{
+  background-image: url('../images/shopping-carts-1275480_1920.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#beauty .card{
+  background-color:rgb(242, 236, 236);
+}
+
+section .card{
+box-shadow: 1px 1px 2px black;
+}
+.header_title{
+  background-color: #000000b5;
+  border-radius: 10px;
+  padding:10px 0;
+}
+
 
 hr {
   margin: 1rem 0;

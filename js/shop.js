@@ -6,6 +6,7 @@ var products = [
         name: 'cooking oil',
         price: 10.5,
         type: 'grocery',
+        img:'../images/oil.png',
         offer: {
             number: 3,
             percent: 20
