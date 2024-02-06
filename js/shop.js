@@ -1,4 +1,5 @@
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
+
 var products = [
     {
         id: 1,
@@ -71,8 +72,14 @@ var products = [
 
 // Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
 var cart = [];
-
 var total = 0;
+
+const cleanTotalCart = () => {
+    const totalPriceCart = document.getElementById("total_price")
+    totalPriceCart.innerHTML = 0
+}
+
+cleanTotalCart()
 
 // Exercise 1
 function buy(id) {
@@ -81,37 +88,87 @@ function buy(id) {
     const findOutCart = cart.some(prod => prod.id === id)
     if (!findOutCart) {
         const productToAdd = products.filter(prod => prod.id === id)
-        const productWithQuantity = { ...productToAdd[0], quantity: 1 }
+        const productWithQuantity = { ...productToAdd[0], quantity: 1, subtotalWithDiscount: 0 }
         cart.push(productWithQuantity)
+
+    } else {
+        cart.map(prod => {
+            if (prod.id === id) {
+                prod.quantity++
+            }
+        })
     }
+    applyPromotionsCart()
+    printCart()
+    calculateTotal()
 }
 
 // Exercise 2
 function cleanCart() {
-    const cartList = document.getElementById("cart_list")
-    const totalPrice = document.getElementById("total_price")
-    cartList.innerHTML=""
-    totalPrice.textContent="0"
-
+    cart = []
+    printCart()
+    cleanTotalCart()
 }
 
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
-   
-   return cart.reduce((a,b)=> a + b.price,0)
-   
-
+    let total = 0
+    for(let i = 0; i < cart.length; i++ ){
+        if(cart[i].subtotalWithDiscount){
+            total += cart[i].subtotalWithDiscount
+        }else{
+            total += cart[i].price * cart[i].quantity
+        }
+    }
+    return total
 }
 
 // Exercise 4
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+
+    cart.map(prod => {
+        if (prod.offer && prod.offer.number === 3 && prod.quantity >= prod.offer.number) {
+            prod.subtotalWithDiscount = (prod.price * prod.quantity) - (((prod.price * prod.quantity) * 20) / 100)
+        }
+        if (prod.offer && prod.offer.number === 10 && prod.quantity >= prod.offer.number) {
+            prod.subtotalWithDiscount = (prod.price * prod.quantity) - (((prod.price * prod.quantity) * 30) / 100)
+        }
+
+    })
+
 }
 
 // Exercise 5
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    const mainCount = document.getElementById("count_product")
+    const cartList = document.getElementById("cart_list")
+    const totalPriceCart = document.getElementById("total_price")
+    let totalPriceProduct = 0
+    cartList.innerHTML = ''
+    cart.map(prod => {
+        if (prod.subtotalWithDiscount) {
+            totalPriceProduct = prod.subtotalWithDiscount
+        } else {
+            totalPriceProduct = prod.price * prod.quantity
+        }
+        cartList.innerHTML += `<tr>
+        <th scope="row">${prod.name}</th>
+        <td>${prod.price}</td>
+        <td>${prod.quantity}</td>
+        <td>${totalPriceProduct}</td>
+        </tr>`
+
+        totalPriceCart.textContent = calculateTotal()
+    })
+
+    mainCount.textContent = cart.length
+
+
+
+
 }
 
 
