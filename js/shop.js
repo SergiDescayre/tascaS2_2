@@ -6,7 +6,6 @@ var products = [
         name: 'cooking oil',
         price: 10.5,
         type: 'grocery',
-        img:'../images/oil.png',
         offer: {
             number: 3,
             percent: 20
@@ -65,6 +64,7 @@ var products = [
         type: 'clothes'
     }
 ]
+
 
 // => Reminder, it's extremely important that you debug your code. 
 // ** It will save you a lot of time and frustration!
