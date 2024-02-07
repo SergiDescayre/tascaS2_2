@@ -104,6 +104,11 @@ body .header{
   background-color:rgb(242, 236, 236);
 }
 
+.img-card{
+  width: 30px;
+  border-radius: 4px;
+}
+
 section .card{
 box-shadow: 1px 1px 2px black;
 }

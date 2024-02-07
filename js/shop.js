@@ -17,14 +17,14 @@ var products = [
         name: 'Pasta',
         price: 6.25,
         type: 'grocery',
-        image:"../images/oil.png",
+        image:"../images/pasta.png",
     },
     {
         id: 3,
         name: 'Instant cupcake mixture',
         price: 5,
         type: 'grocery',
-        image:"../images/oil.png",
+        image:"../images/cake.png",
         offer: {
             number: 10,
             percent: 30
@@ -169,6 +169,7 @@ function printCart() {
         <td>${prod.price}</td>
         <td>${prod.quantity}</td>
         <td>${totalPriceProduct}</td>
+        <td><img src="${prod.image}" class="img-card"></td>
         <td><button onClick="removeFromCart(${prod.id})" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></button></td>
         </tr>`
 
@@ -210,10 +211,12 @@ function removeFromCart(id) {
 }
 const images = [...document.querySelectorAll(".card-img-top")]
 
-images.map(img => img.src="../images/oil.png")
+// for(let i = 0 ;i<products.length ; i++){
+//     images[i].src=products[i].image
+// }
 
-
-//products.map(img => console.log(img.image))
+products.map((prod,index) => images[index].src=prod.image)
+       
 
 function open_modal() {
     printCart();
