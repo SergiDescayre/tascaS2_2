@@ -6,6 +6,7 @@ var products = [
         name: 'cooking oil',
         price: 10.5,
         type: 'grocery',
+        image:"../images/oil.png",
         offer: {
             number: 3,
             percent: 20
@@ -15,13 +16,15 @@ var products = [
         id: 2,
         name: 'Pasta',
         price: 6.25,
-        type: 'grocery'
+        type: 'grocery',
+        image:"../images/oil.png",
     },
     {
         id: 3,
         name: 'Instant cupcake mixture',
         price: 5,
         type: 'grocery',
+        image:"../images/oil.png",
         offer: {
             number: 10,
             percent: 30
@@ -31,36 +34,42 @@ var products = [
         id: 4,
         name: 'All-in-one',
         price: 260,
+        image:"../images/oil.png",
         type: 'beauty'
     },
     {
         id: 5,
         name: 'Zero Make-up Kit',
         price: 20.5,
+        image:"../images/oil.png",
         type: 'beauty'
     },
     {
         id: 6,
         name: 'Lip Tints',
         price: 12.75,
+        image:"../images/oil.png",
         type: 'beauty'
     },
     {
         id: 7,
         name: 'Lawn Dress',
         price: 15,
+        image:"../images/oil.png",
         type: 'clothes'
     },
     {
         id: 8,
         name: 'Lawn-Chiffon Combo',
         price: 19.99,
+        image:"../images/oil.png",
         type: 'clothes'
     },
     {
         id: 9,
         name: 'Toddler Frock',
         price: 9.99,
+        image:"../images/oil.png",
         type: 'clothes'
     }
 ]
@@ -199,7 +208,12 @@ function removeFromCart(id) {
     })
     printCart()
 }
+const images = [...document.querySelectorAll(".card-img-top")]
 
+images.map(img => img.src="../images/oil.png")
+
+
+//products.map(img => console.log(img.image))
 
 function open_modal() {
     printCart();
