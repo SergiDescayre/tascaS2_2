@@ -115,10 +115,10 @@ function cleanCart() {
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
     let total = 0
-    for(let i = 0; i < cart.length; i++ ){
-        if(cart[i].subtotalWithDiscount){
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].subtotalWithDiscount) {
             total += cart[i].subtotalWithDiscount
-        }else{
+        } else {
             total += cart[i].price * cart[i].quantity
         }
     }
@@ -150,7 +150,7 @@ function printCart() {
     let totalPriceProduct = 0
     cartList.innerHTML = ''
     cart.map(prod => {
-        if (prod.subtotalWithDiscount) {
+        if (prod.subtotalWithDiscount > 0) {
             totalPriceProduct = prod.subtotalWithDiscount
         } else {
             totalPriceProduct = prod.price * prod.quantity
@@ -160,16 +160,13 @@ function printCart() {
         <td>${prod.price}</td>
         <td>${prod.quantity}</td>
         <td>${totalPriceProduct}</td>
+        <td><button onClick="removeFromCart(${prod.id})" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></button></td>
         </tr>`
 
         totalPriceCart.textContent = calculateTotal()
     })
 
     mainCount.textContent = cart.length
-
-
-
-
 }
 
 
@@ -178,7 +175,31 @@ function printCart() {
 // Exercise 7
 function removeFromCart(id) {
 
+    const removeProduct = (id) => {
+        cart = cart.filter(prod => prod.id !== id)
+    }
+    cart.map(prod => {
+        if (prod.quantity && prod.id === id && prod.quantity >= 1) {
+            prod.quantity--
+            if (prod.offer && prod.quantity <= prod.offer.number) {
+                prod.subtotalWithDiscount = prod.quantity * prod.price
+            }
+
+            prod.subtotalWithDiscount = prod.quantity * prod.price
+
+        }
+
+        if (prod.quantity === 0) {
+            removeProduct(id)
+        }
+
+        if (cart.length === 0) {
+            cleanCart()
+        }
+    })
+    printCart()
 }
+
 
 function open_modal() {
     printCart();
