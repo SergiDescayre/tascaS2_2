@@ -77,7 +77,7 @@ var total = 0;
 
 const cleanTotalCart = () => {
     const totalPriceCart = document.getElementById("total_price")
-    totalPriceCart.innerHTML = 0
+    totalPriceCart.textContent = "0"
 }
 
 cleanTotalCart()
