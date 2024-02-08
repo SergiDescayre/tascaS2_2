@@ -100,6 +100,11 @@ body .header{
   background-size: cover;
 }
 
+table tbody tr td,
+table thead tr th:last-child{
+  text-align: end;
+}
+
 #beauty .card{
   background-color:rgb(242, 236, 236);
 }
@@ -107,6 +112,7 @@ body .header{
 .img-card{
   width: 30px;
   border-radius: 4px;
+  display:none;
 }
 
 section .card{
@@ -141,6 +147,14 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
+
+@media (min-width:768px){
+  .img-card{
+    display:block;
+  }
+}
+
+
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 2.5rem;

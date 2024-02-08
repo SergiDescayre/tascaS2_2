@@ -34,28 +34,28 @@ var products = [
         id: 4,
         name: 'All-in-one',
         price: 260,
-        image:"../images/oil.png",
+        image:"../images/all.png",
         type: 'beauty'
     },
     {
         id: 5,
         name: 'Zero Make-up Kit',
         price: 20.5,
-        image:"../images/oil.png",
+        image:"../images/makeUp.png",
         type: 'beauty'
     },
     {
         id: 6,
         name: 'Lip Tints',
         price: 12.75,
-        image:"../images/oil.png",
+        image:"../images/tints.png",
         type: 'beauty'
     },
     {
         id: 7,
         name: 'Lawn Dress',
         price: 15,
-        image:"../images/oil.png",
+        image:"../images/tints.png",
         type: 'clothes'
     },
     {
@@ -69,7 +69,7 @@ var products = [
         id: 9,
         name: 'Toddler Frock',
         price: 9.99,
-        image:"../images/oil.png",
+        image:"../images/all.png",
         type: 'clothes'
     }
 ]
